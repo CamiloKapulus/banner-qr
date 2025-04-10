@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Banner QR</title>
+  <title>Banner con QR</title>
   <style>
     body {
       margin: 0;
@@ -11,36 +11,36 @@
     .container {
       position: relative;
       width: 589px;
-      height: auto;
-      margin: auto;
-    }
-    .banner {
-      width: 100%;
-      display: block;
+      height: 1557px;
+      background-image: url('https://i.imgur.com/LvIHTZL.jpeg');
+      background-size: cover;
+      background-position: center;
     }
     .qr {
       position: absolute;
-      top: calc(50% - 35px);
+      top: 920px; /* Ajustado para centrar */
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       width: 230px;
       height: 230px;
       border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img class="banner" src="https://i.imgur.com/LvIHTZL.jpeg" alt="Banner">
-    <img class="qr" id="qrImg" src="" alt="QR dinámico">
+    <img id="qr" class="qr" src="" alt="QR">
   </div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const qrUrl = urlParams.get('qr');
-    if (qrUrl) {
-      document.getElementById('qrImg').src = decodeURIComponent(qrUrl);
+    // Obtener parámetro ?qr=
+    const params = new URLSearchParams(window.location.search);
+    const qrURL = params.get("qr");
+
+    // Asignar al <img>
+    if (qrURL) {
+      document.getElementById("qr").src = qrURL;
     }
   </script>
 </body>
